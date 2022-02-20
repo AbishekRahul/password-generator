@@ -1,0 +1,4 @@
+Step1: aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 351683513509.dkr.ecr.ap-south-1.amazonaws.com
+Step2: docker build -t pass-gen .
+Step3: docker tag pass-gen:latest 351683513509.dkr.ecr.ap-south-1.amazonaws.com/pass-gen:latest
+Step4: docker push 351683513509.dkr.ecr.ap-south-1.amazonaws.com/pass-gen:latest
