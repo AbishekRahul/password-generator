@@ -17,7 +17,6 @@ ssm = boto3.client('ssm', region_name='ap-south-1')
 response = boto3.client('sts').get_caller_identity()
 print(response)
 # DJANGO_ECS_SECRETS = json.loads(env("DJANGO_ECS_SECRETS"))
-SECRET_KEY = ssm.get_parameter(Name=prefixenv + 'DJANGO_SECRET_KEY', WithDecryption=True)['Parameter']['Value']
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -28,6 +27,7 @@ env = 'dev'
 prefixenv = f'/{prefix}/{env}/'
 
 
+SECRET_KEY = ssm.get_parameter(Name=prefixenv + 'DJANGO_SECRET_KEY', WithDecryption=True)['Parameter']['Value']
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
